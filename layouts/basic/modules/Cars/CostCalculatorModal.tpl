@@ -53,6 +53,7 @@
             Anuluj
         </button>
     </div>
+<!-- Jeśli rozbudowywałbym ten modul to przenioslbym ten JS do jakiegos zewnetrznego pliku -->
     <script type="text/javascript">
         jQuery(document).ready(function () {
             // Inicjalizacja kalendarzy
@@ -97,8 +98,7 @@
                         isValid = false;
                     }
                 }
-                
-                // Wyświetlenie komunikatu o błędach
+
                 if (!isValid) {
                     app.showNotify({
                         text: 'Proszę wypełnić wszystkie wymagane pola',
@@ -109,7 +109,7 @@
                 
                 const recordId = form.find('input[name="record"]').val();
                 
-                // Pobierz dane o rekordzie i powiązanych rekordach za pomocą AJAX
+                // tutaj pobirram dane o rekordzie i powiązanych rekordach za pomocą AJAX
                 AppConnector.request({
                     module: 'Cars',
                     action: 'GetRecordInfo',
@@ -120,14 +120,13 @@
                     if (response.success) {
                         const data = response.result;
                         
-                        // Przygotowanie komunikatu
                         let title = 'Wynik kalkulacji kosztów';
                         let message = '<div class="cost-calculation-result">';
                         message += '<p><strong>Samochód:</strong> ' + data.car_name + ' (ID: ' + recordId + ')</p>';
                         message += '<p><strong>Zakres dat:</strong> od ' + startDate.val() + ' do ' + endDate.val() + '</p>';
                         message += '<p><strong>Średnie zużycie paliwa:</strong> ' + data.average_fuel + ' l/100km</p>';
                         
-                        // Dodanie informacji o powiązanych rekordach Departures, jeśli istnieją
+                        // Dodałem sobie informacji o powiązanych rekordach Departures jeśli istnieją
                         if (data.found_records) {
                             message += '<p><strong>Znalezione wyjazdy:</strong></p><ul>';
                             
@@ -140,13 +139,13 @@
                             message += '<p><strong>Koszt eksploatacji:</strong> ' + data.total_cost.toFixed(2) + ' zł</p>';
                             message += '<p><small>(Obliczono według wzoru: (Suma kilometrów / 100) * Średnie zużycie paliwa * 5 zł)</small></p>';
                             
-                            // Zapisz obliczony koszt do pola operating_costs
+                            // Zapisuje sobie obliczony koszt do pola operating_costs
                             saveOperatingCosts(recordId, data.total_cost.toFixed(2), title, message);
                         } else {
                             message += '<p><strong>Nie znaleziono żadnych wyjazdów w podanym zakresie dat.</strong></p>';
                             message += '</div>';
                             
-                            // Wyświetlenie powiadomienia
+                            // powiadomienia
                             app.showNotify({
                                 title: title,
                                 text: message,
