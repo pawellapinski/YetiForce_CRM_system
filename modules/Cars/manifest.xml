@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<module>
+    <type>extension</type>
+    <name>Cars</name>
+    <label>Cars</label>
+    <dependencies>
+        <vtiger_version>6.5.0</vtiger_version>
+    </dependencies>
+</module>

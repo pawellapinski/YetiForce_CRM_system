@@ -1,0 +1,9 @@
+{
+	"php": {
+		"Departures": "Departures",
+		"SINGLE_Departures": "Departures",
+		"LBL_CUSTOM_INFORMATION": "Custom Information",
+		"LBL_BASIC_INFORMATION": "Basic Information",
+		"Nazwa samochodu": "Nazwa samochodu"
+	}
+}
