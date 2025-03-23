@@ -1,8 +1,0 @@
-<?
-
-return [
-    'CalculateCost' => [
-        'file' => 'modules/Cars/actions/CalculateCost.php',
-        'class' => 'Cars_CalculateCost_Action',
-    ]
-];
