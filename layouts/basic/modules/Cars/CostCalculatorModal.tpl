@@ -159,7 +159,6 @@
                             });
                         }
                     } else {
-                        // Jeśli nie udało się pobrać danych, wyświetl powiadomienie o błędzie
                         app.showNotify({
                             title: 'Błąd',
                             text: 'Nie udało się obliczyć kosztu eksploatacji',
@@ -167,7 +166,6 @@
                         });
                     }
                 }).fail(function() {
-                    // W przypadku błędu AJAX, wyświetl powiadomienie o błędzie
                     app.showNotify({
                         title: 'Błąd',
                         text: 'Wystąpił błąd podczas komunikacji z serwerem',
@@ -176,7 +174,7 @@
                 });
             });
             
-            // Funkcja do zapisywania kosztu eksploatacji
+            // Funkcja do zapisywania kosztu eksploatacji polaczone z moim php SaveOperatingCosts
             function saveOperatingCosts(recordId, cost, title, message) {
                 AppConnector.request({
                     module: 'Cars',
@@ -205,7 +203,7 @@
                         app.event.trigger('DetailView.UpdateRecord');
                     }
                 }).fail(function() {
-                    // W przypadku błędu, wyświetl powiadomienie z informacją o kosztach, ale z ostrzeżeniem
+                    // W przypadku błędu wyświetl powiadomienie z informacją o kosztach, ale z ostrzeżeniem
                     app.showNotify({
                         title: title,
                         text: message + '<p class="text-danger mt-2"><strong>Uwaga: Nie udało się zapisać kosztu eksploatacji do rekordu.</strong></p></div>',
